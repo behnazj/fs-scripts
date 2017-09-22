@@ -1,2 +1,2 @@
-# fs_scripts
+# fs-scripts
 Useful scripts for analysis with freesurfer
