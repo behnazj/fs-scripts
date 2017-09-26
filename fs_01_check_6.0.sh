@@ -4,6 +4,8 @@
 
 #The command is based on http://surfer.nmr.mgh.harvard.edu/fswiki/DownloadAndInstall
 
+#26-Sep-2017 K.Nemoto
+
 echo "Test the installation of freesurfer"
 
 cd $SUBJECTS_DIR
