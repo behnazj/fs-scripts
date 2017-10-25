@@ -1,8 +1,14 @@
 #!/bin/bash
+# A script to run FreeView to check volume files
 
 if [ $# -lt 1 ]; then
- echo "Subject名を指定してください"
- echo "使い方: $0 Subject名"
+  if [ $LANG == "ja_JP.UTF-8" ]; then
+    echo "Subject名を指定してください!"
+    echo "使い方: $0 Subject名 (例: bert)"
+  else
+    echo "Please specify subject name!"
+    echo "Usage: $0 subject (e.g. bert)"
+  fi
  exit 1
 fi 
 
@@ -15,6 +21,5 @@ freeview -v \
     $SUBJECTS_DIR/$1/surf/lh.white:edgecolor=blue \
     $SUBJECTS_DIR/$1/surf/lh.pial:edgecolor=red \
     $SUBJECTS_DIR/$1/surf/rh.white:edgecolor=blue \
-    $SUBJECTS_DIR/$1/surf/rh.pial:edgecolor=red \
-
+    $SUBJECTS_DIR/$1/surf/rh.pial:edgecolor=red &
 
