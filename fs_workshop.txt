@@ -1,11 +1,13 @@
-#FreeViewでvolumeを読み込む場合
-#volumeデータはsubject名/mriの下に保存されている
+#FreeSurfer勉強会で用いるコマンド
 
+
+#1. FreeViewでvolumeを読み込む場合
+#   volumeデータはsubject名/mriの下に保存されている
+
+cd $SUBJECTS_DIR
 freeview -v \
   bert/mri/T1.mgz \
   bert/mri/wm.mgz \
   bert/mri/brainmask.mgz \
   bert/mri/aseg.mgz:colormap=lut:opacity=0.2
-
-
 
