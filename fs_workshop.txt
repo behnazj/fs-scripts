@@ -14,6 +14,7 @@ freeview -v \
   bert/mri/wm.mgz \
   bert/mri/brainmask.mgz \
   bert/mri/aseg.mgz:colormap=lut:opacity=0.2
+
 ====================ここまで=================================
 
 
@@ -38,6 +39,7 @@ freeview -f \
   bert/surf/lh.white:edgecolor=blue \
   bert/surf/lh.pial:edgecolor=red \
   --viewport 3d
+
 ====================ここまで=================================
 
 #2.1. アトラスの違い
@@ -49,5 +51,6 @@ freeview -f  \
   bert/surf/lh.pial:annot=aparc.DKTatlas.annot:name=DKT \
   bert/surf/lh.pial:annot=aparc.a2009s.annot:name=Destrieux \
   bert/surf/lh.pial:annot=aparc.annot:name=Desikan-Killiany
+
 ====================ここまで=================================
 
