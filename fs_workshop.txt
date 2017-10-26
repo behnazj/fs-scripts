@@ -1,13 +1,53 @@
 #FreeSurfer勉強会で用いるコマンド
 
-
-#1. FreeViewでvolumeを読み込む場合
+#1. FreeViewでvolumeデータを読み込む場合
 #   volumeデータはsubject名/mriの下に保存されている
 
+#   オプション
+#   colormap=lut            <- カラーマップに lut を利用
+#   opacity=0.2             <- 不透明度を0.2に設定   
+
+====================以下をコピー＆ペースト====================
 cd $SUBJECTS_DIR
 freeview -v \
   bert/mri/T1.mgz \
   bert/mri/wm.mgz \
   bert/mri/brainmask.mgz \
   bert/mri/aseg.mgz:colormap=lut:opacity=0.2
+====================ここまで=================================
+
+
+#2. FreeViewでsurfaceデータを読み込む場合
+#   surfaceデータはsubject名/surfの下に保存されている
+
+#   オプション
+#   annot=aparc.annot       <- label/?h.aparc.annot を読み込む
+#   name=lh.pial_aparc      <- FreeViewに表示される名前
+#   visible=0               <- 表示するチェックボックスをoffにする
+#   overlay=lh.thickness    <- lh.thicknessを重ねあわせる
+#   overlay_threshold=0.1,3 <- lh.thicknessの表示範囲
+#   edgecolor=blue          <- 境界を青色で示す
+#   --viewport 3d           <- 3次元表示の画面を左上に持ってくる 
+
+====================以下をコピー＆ペースト====================
+cd $SUBJECTS_DIR
+freeview -f \
+  bert/surf/lh.pial:annot=aparc.annot:name=lh.pial_aparc:visible=0 \
+  bert/surf/lh.inflated:overlay=lh.thickness:overlay_threshold=0.1,3:name=lh.inflated_thickness:visible=0 \
+  bert/surf/lh.inflated:visible=0 \
+  bert/surf/lh.white:edgecolor=blue \
+  bert/surf/lh.pial:edgecolor=red \
+  --viewport 3d
+====================ここまで=================================
+
+#2.1. アトラスの違い
+#   Alt+cで表示順番を入れ替えることができる
+
+====================以下をコピー＆ペースト====================
+cd $SUBJECTS_DIR
+freeview -f  \
+  bert/surf/lh.pial:annot=aparc.DKTatlas.annot:name=DKT \
+  bert/surf/lh.pial:annot=aparc.a2009s.annot:name=Destrieux \
+  bert/surf/lh.pial:annot=aparc.annot:name=Desikan-Killiany
+====================ここまで=================================
 
