@@ -1,5 +1,8 @@
 #!/bin/bash
+#fs_autorecon.sh
 #For-loop for recon-all
+#Usage: fs_autorecon.sh <nifti files>
+#Wild card can be used
 
 #26-Sep-2017 K.Nemoto
 

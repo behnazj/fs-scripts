@@ -1,5 +1,5 @@
 #!/bin/bash
-#fs_01_check_6.0.sh
+#fs_check_6.0.sh
 #Tiny script to check if FreeSurfer is installed correctly.
 
 #The command is based on http://surfer.nmr.mgh.harvard.edu/fswiki/DownloadAndInstall

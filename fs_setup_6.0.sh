@@ -1,5 +1,5 @@
 #!/bin/bash
-#fs_00_setup_6.0.sh
+#fs_setup_6.0.sh
 #Script to install freesurfer v6.0.0.
 #This script downloads required files, install them, and configure that
 #subject directory is under $HOME

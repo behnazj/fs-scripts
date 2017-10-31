@@ -1,5 +1,7 @@
 #!/bin/bash
+#fs_volume.sh
 # A script to run FreeView to check volume files
+#Usage: fs_volume.sh <Subject>
 
 if [ $# -lt 1 ]; then
   if [ $LANG == "ja_JP.UTF-8" ]; then
