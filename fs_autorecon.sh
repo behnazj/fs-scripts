@@ -29,13 +29,22 @@ echo "Your logical cores are ${ncores}"
 
 #If logical cores >=4, enable parallelize option
 if [ $ncores -ge 4 ]; then
-	parallel="-parallel"
-	echo "enable parallel mode"
+    parallel="-parallel"
+    echo "enable parallel mode"
 else
-	parallel=""
-	echo "disable parallel mode"
+    parallel=""
+    echo "disable parallel mode"
 fi
 
+#If logical cores >=8, enable openmp option
+if [ $ncores -ge 8 ]; then
+    fsncores=$(($ncores-2))
+    mp="-openmp $fsncores"
+else
+    mp=""
+fi
+
+#Check if the files are specified
 if [ $# -lt 1 ]
 then
 	echo "Please specify image files!"
@@ -49,6 +58,9 @@ echo "Begin recon-all"
 for f in "$@"
 do
 	subjid=${f%%.*}
-	recon-all -i $f -s $subjid -all $parallel
+	echo "Start recon-all -i $f -s $subjid -all $parallel $mp"
+	recon-all -i $f -s $subjid -all $parallel $mp
 done
+
+exit
 
