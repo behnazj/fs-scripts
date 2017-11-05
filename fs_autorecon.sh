@@ -6,6 +6,12 @@
 
 #05-Nov-2017 K.Nemoto
 
+#Generate a log
+logdate=$(date +%Y%m%d-%H%M%S)
+log=${logdate}_reconall.log
+touch $log
+exec &> >(tee -a "$log")
+
 #Check OS
 os=$(uname)
 
