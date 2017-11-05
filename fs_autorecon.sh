@@ -53,8 +53,7 @@ then
 	exit 1
 fi
 
-echo "Begin recon-all"
-
+# recon-all
 for f in "$@"
 do
 	subjid=${f%%.*}
