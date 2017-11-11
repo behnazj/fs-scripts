@@ -7,7 +7,8 @@
 #   colormap=lut            <- カラーマップに lut を利用
 #   opacity=0.2             <- 不透明度を0.2に設定   
 
-====================以下をコピー＆ペースト====================
+1.==================以下をコピー＆ペースト====================
+
 cd $SUBJECTS_DIR
 freeview -v \
   bert/mri/T1.mgz \
@@ -18,7 +19,7 @@ freeview -v \
 ====================ここまで=================================
 
 
-#2. FreeViewでsurfaceデータを読み込む場合
+#2.1 FreeViewでsurfaceデータを読み込む場合
 #   surfaceデータはsubject名/surfの下に保存されている
 
 #   オプション
@@ -30,7 +31,8 @@ freeview -v \
 #   edgecolor=blue          <- 境界を青色で示す
 #   --viewport 3d           <- 3次元表示の画面を左上に持ってくる 
 
-====================以下をコピー＆ペースト====================
+2.1=================以下をコピー＆ペースト====================
+
 cd $SUBJECTS_DIR
 freeview -f \
   bert/surf/lh.pial:annot=aparc.annot:name=lh.pial_aparc:visible=0 \
@@ -42,10 +44,11 @@ freeview -f \
 
 ====================ここまで=================================
 
-#2.1. アトラスの違い
+#2.2 アトラスの違い
 #   Alt+cで表示順番を入れ替えることができる
 
-====================以下をコピー＆ペースト====================
+#2.2=================以下をコピー＆ペースト====================
+
 cd $SUBJECTS_DIR
 freeview -f  \
   bert/surf/lh.pial:annot=aparc.DKTatlas.annot:name=DKT \
@@ -53,4 +56,9 @@ freeview -f  \
   bert/surf/lh.pial:annot=aparc.annot:name=Desikan-Killiany
 
 ====================ここまで=================================
+
+
+#3. 
+
+
 
