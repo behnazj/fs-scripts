@@ -111,4 +111,29 @@ asegstats2table \
 
 ====================ここまで=================================
 
+#2.7 aparcstats2table
+#デフォルトはarea
+
+#2.7================以下をコピー＆ペースト====================
+
+cd $SUBJECTS_DIR
+aparcstats2table \
+ --heml lh \
+ --subjects bert \
+ --tablefile lh.aparc.area.csv
+
+====================ここまで=================================
+
+#2.8 aparcstats2tableで、thicknessを求める
+
+#2.8================以下をコピー＆ペースト====================
+
+cd $SUBJECTS_DIR
+aparcstats2table \
+ --heml lh \
+ --subjects bert \
+ --meas thickness \
+ --tablefile lh.aparc.thickness.csv
+
+====================ここまで=================================
 
