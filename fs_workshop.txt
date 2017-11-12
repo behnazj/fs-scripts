@@ -46,19 +46,50 @@ freeview -f \
 
 #2.2 アトラスの違い
 #   Alt+cで表示順番を入れ替えることができる
-
+#   --layout 1 画面表示をパターン1(1画面だけ)にする
+ 
 #2.2=================以下をコピー＆ペースト====================
 
 cd $SUBJECTS_DIR
 freeview -f  \
   bert/surf/lh.pial:annot=aparc.DKTatlas.annot:name=DKT \
   bert/surf/lh.pial:annot=aparc.a2009s.annot:name=Destrieux \
-  bert/surf/lh.pial:annot=aparc.annot:name=Desikan-Killiany
+  bert/surf/lh.pial:annot=aparc.annot:name=Desikan-Killiany \
+  --viewport 3d --layout 1
 
 ====================ここまで=================================
 
 
-#3. 
+#2.3 aseg, aparc, LUTの関係 
+# orig.mgz: 元のMRIからボクセルサイズを1x1x1に統一した画像
+# aparc+aseg.mgz: DK atlasによるparcellationと皮質下segmentation
+#  の結果を統合した画像
+# lut: FreeSurfer用のLookup table
+# --layout 4: 画面表示をパターン4(左上を大きく、残り3つは右に縦に並べる)にする
+
+#2.3=================以下をコピー＆ペースト====================
+
+cd $SUBJECTS_DIR
+freeview \
+-v \
+  bert/mri/orig.mgz \
+  bert/mri/aparc+aseg.mgz:colormap=lut:opacity=0.4 \
+-f \
+  bert/surf/lh.white:annot=aparc.annot \
+--viewport coronal --layout 4
+
+====================ここまで=================================
+
+#2.4 FreeSurferのLookup Tableの確認
+
+#2.4=================以下をコピー＆ペースト====================
+
+less $FREESURFER_HOME/FreeSurferColorLUT.txt
+
+====================ここまで=================================
+
+
+
 
 
 
