@@ -88,8 +88,27 @@ less $FREESURFER_HOME/FreeSurferColorLUT.txt
 
 ====================ここまで=================================
 
+#2.5 asegstats2table
 
+#2.5================以下をコピー＆ペースト====================
 
+cd $SUBJECTS_DIR
+asegstats2table \
+ --subjects bert \
+ --tablefile aseg.vol.csv
 
+====================ここまで=================================
+
+#2.6 asegstats2table の結果を転置
+
+#2.6================以下をコピー＆ペースト====================
+
+cd $SUBJECTS_DIR
+asegstats2table \
+ --subjects bert \
+ --transpose \
+ --tablefile aseg.vol.trans.csv
+
+====================ここまで=================================
 
 
