@@ -20,4 +20,9 @@ FreeViewにて、SubjectのSurfaceデータを確認するスクリプトです
 ## fs_volsurf.sh
 FreeViewにて、SubjectのVolumeデータ、Surfaceデータを一度に読み込んで確認するスクリプトです
 
+## fs_asegstats.sh
+皮質下volumeデータの統計値を表に書き出すスクリプトです
+
+## fs_aparcstats.sh
+皮質データの種々の統計値を表に書き出すスクリプトです
 
