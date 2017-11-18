@@ -118,7 +118,7 @@ asegstats2table \
 
 cd $SUBJECTS_DIR
 aparcstats2table \
- --heml lh \
+ --hemi lh \
  --subjects bert \
  --tablefile lh.aparc.area.csv
 
@@ -130,7 +130,7 @@ aparcstats2table \
 
 cd $SUBJECTS_DIR
 aparcstats2table \
- --heml lh \
+ --hemi lh \
  --subjects bert \
  --meas thickness \
  --tablefile lh.aparc.thickness.csv
