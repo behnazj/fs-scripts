@@ -1,14 +1,15 @@
 #FreeSurfer勉強会で用いるコマンド
 
-#1. FreeViewでvolumeデータを読み込む場合
-#   volumeデータはsubject名/mriの下に保存されている
+## 第1部: 変数についての理解/Freeviewの基本
 
-#   オプション
-#   colormap=lut            <- カラーマップに lut を利用
-#   opacity=0.2             <- 不透明度を0.2に設定   
+1. FreeViewでvolumeデータを表示
+	volumeデータはsubject名/mriの下に保存されている
 
-1.==================以下をコピー＆ペースト====================
+	オプション
+	colormap=lut	カラーマップに lut を利用
+	opacity=0.2		不透明度を0.2に設定
 
+=====================================================================
 cd $SUBJECTS_DIR
 freeview -v \
   bert/mri/T1.mgz \
@@ -16,23 +17,24 @@ freeview -v \
   bert/mri/brainmask.mgz \
   bert/mri/aseg.mgz:colormap=lut:opacity=0.2
 
-====================ここまで=================================
+=====================================================================
 
+## 第2部: Freeviewの基本(続き)/ROI解析
 
-#2.1 FreeViewでsurfaceデータを読み込む場合
-#   surfaceデータはsubject名/surfの下に保存されている
+2.1 FreeViewでsurfaceデータを表示
+	surfaceデータはsubject名/surfの下に保存されている
 
-#   オプション
-#   annot=aparc.annot       <- label/?h.aparc.annot を読み込む
-#   name=lh.pial_aparc      <- FreeViewに表示される名前
-#   visible=0               <- 表示するチェックボックスをoffにする
-#   overlay=lh.thickness    <- lh.thicknessを重ねあわせる
-#   overlay_threshold=0.1,3 <- lh.thicknessの表示範囲
-#   edgecolor=blue          <- 境界を青色で示す
-#   --viewport 3d           <- 3次元表示の画面を左上に持ってくる 
+	オプション
+	annot=aparc.annot			label/?h.aparc.annot を読み込む
+								(?にはlかrが入る)
+	name=lh.pial_aparc			FreeViewに表示される名前
+	visible=0					表示するチェックボックスをoffにする
+	overlay=lh.thickness		lh.thicknessを重ねあわせる
+	overlay_threshold=0.1,3		lh.thicknessの表示範囲
+	edgecolor=blue				境界を青色で示す
+	--viewport 3d				3次元表示の画面を左上に持ってくる 
 
-2.1=================以下をコピー＆ペースト====================
-
+=====================================================================
 cd $SUBJECTS_DIR
 freeview -f \
   bert/surf/lh.pial:annot=aparc.annot:name=lh.pial_aparc:visible=0 \
@@ -42,33 +44,30 @@ freeview -f \
   bert/surf/lh.pial:edgecolor=red \
   --viewport 3d
 
-====================ここまで=================================
+=====================================================================
 
-#2.2 アトラスの違い
-#   Alt+cで表示順番を入れ替えることができる
-#   --layout 1 画面表示をパターン1(1画面だけ)にする
- 
-#2.2=================以下をコピー＆ペースト====================
+2.2 アトラスの違い
+	Alt+cで表示順番を入れ替えることができる(MacはバグのためGUIで)
+	--layout 1					画面表示をパターン1(1画面だけ)にする
 
+=====================================================================
 cd $SUBJECTS_DIR
-freeview -f  \
+freeview -f \
   bert/surf/lh.pial:annot=aparc.DKTatlas.annot:name=DKT \
   bert/surf/lh.pial:annot=aparc.a2009s.annot:name=Destrieux \
   bert/surf/lh.pial:annot=aparc.annot:name=Desikan-Killiany \
   --viewport 3d --layout 1
 
-====================ここまで=================================
+=====================================================================
 
 
-#2.3 aseg, aparc, LUTの関係 
-# orig.mgz: 元のMRIからボクセルサイズを1x1x1に統一した画像
-# aparc+aseg.mgz: DK atlasによるparcellationと皮質下segmentation
-#  の結果を統合した画像
-# lut: FreeSurfer用のLookup table
-# --layout 4: 画面表示をパターン4(左上を大きく、残り3つは右に縦に並べる)にする
+2.3 aseg, aparc, LUTの関係 
+	orig.mgz		元のMRIからボクセルサイズを1x1x1に統一した画像
+	aparc+aseg.mgz	DK atlasによるparcellationと皮質下segmentationの結果を統合した画像
+	lut				FreeSurfer用のLookup table
+	--layout 4		画面表示をパターン4(左上を大きく、残り3つは右に縦に並べる)にする
 
-#2.3=================以下をコピー＆ペースト====================
-
+=====================================================================
 cd $SUBJECTS_DIR
 freeview \
 -v \
@@ -78,62 +77,178 @@ freeview \
   bert/surf/lh.white:annot=aparc.annot \
 --viewport coronal --layout 4
 
-====================ここまで=================================
+=====================================================================
 
-#2.4 FreeSurferのLookup Tableの確認
 
-#2.4=================以下をコピー＆ペースト====================
-
+2.4 FreeSurferのLookup Tableの確認
+=====================================================================
 less $FREESURFER_HOME/FreeSurferColorLUT.txt
 
-====================ここまで=================================
+=====================================================================
 
-#2.5 asegstats2table
 
-#2.5================以下をコピー＆ペースト====================
-
+2.5 asegstats2table
+=====================================================================
 cd $SUBJECTS_DIR
 asegstats2table \
- --subjects bert \
- --tablefile aseg.vol.csv
+  --subjects bert \
+  --tablefile aseg.vol.csv
 
-====================ここまで=================================
+=====================================================================
 
-#2.6 asegstats2table の結果を転置
-
-#2.6================以下をコピー＆ペースト====================
-
+2.6 asegstats2table の結果を転置
+=====================================================================
 cd $SUBJECTS_DIR
 asegstats2table \
- --subjects bert \
- --transpose \
- --tablefile aseg.vol.trans.csv
+  --subjects bert \
+  --transpose \
+  --tablefile aseg.vol.trans.csv
 
-====================ここまで=================================
+=====================================================================
 
-#2.7 aparcstats2table
-#デフォルトはarea
-
-#2.7================以下をコピー＆ペースト====================
-
+2.7 aparcstats2table
+  デフォルトはarea
+=====================================================================
 cd $SUBJECTS_DIR
 aparcstats2table \
- --hemi lh \
- --subjects bert \
- --tablefile lh.aparc.area.csv
+  --hemi lh \
+  --subjects bert \
+  --tablefile lh.aparc.area.csv
 
-====================ここまで=================================
+=====================================================================
 
-#2.8 aparcstats2tableで、thicknessを求める
-
-#2.8================以下をコピー＆ペースト====================
-
+2.8 aparcstats2tableで、thicknessを求める
+=====================================================================
 cd $SUBJECTS_DIR
 aparcstats2table \
- --hemi lh \
- --subjects bert \
- --meas thickness \
- --tablefile lh.aparc.thickness.csv
+  --hemi lh \
+  --subjects bert \
+  --meas thickness \
+  --tablefile lh.aparc.thickness.csv
 
-====================ここまで=================================
+=====================================================================
+
+## 第3部: FreeSurferトラブルシューティング(1) 脳抽出のマニュアル修正
+
+3.0 SUBJECTS_DIRの準備
+	Lin4Neuroの場合	/meida/sf_share/の下にbuckner_data
+	Macの場合		~/Downloads/の下にbuckner_data
+
+=====================================================================
+#Lin4Neuroの場合
+export SUBJECTS_DIR=/media/sf_share/buckner_data/tutorial_subjs
+
+#Macの場合
+export SUBJECTS_DIR=~/Downloads/buckner_data/tutorial_subjects
+
+=====================================================================
+
+3.1 脳抽出のマニュアル修正:削りすぎ
+=====================================================================
+cd $SUBJECTS_DIR
+freeview -v skullstrip_before/mri/T1.mgz \
+  skullstrip_before/mri/brainmask.mgz:colormap=heat:visible=false -f \
+  skullstrip_before/surf/lh.white:edgecolor=yellow \
+  skullstrip_before/surf/lh.pial:edgecolor=red \
+  skullstrip_before/surf/rh.white:edgecolor=yellow \
+  skullstrip_before/surf/rh.pial:edgecolor=red \
+
+=====================================================================
+
+3.2.1 脳抽出のマニュアル修正:小脳以外へのはみ出し
+=====================================================================
+cd $SUBJECTS_DIR
+freeview -v pial_edits_before/mri/T1.mgz \
+  pial_edits_before/mri/brainmask.mgz \
+  -f pial_edits_before/surf/lh.white:edgecolor=yellow \
+  pial_edits_before/surf/lh.pial:edgecolor=red \
+  pial_edits_before/surf/rh.white:edgecolor=yellow \
+  pial_edits_before/surf/rh.pial:edgecolor=red \
+
+=====================================================================
+
+3.2.2 脳抽出のマニュアル修正:修正後
+=====================================================================
+cd $SUBJECTS_DIR
+freeview -v pial_edits_after/mri/T1.mgz \
+  pial_edits_after/mri/brainmask.mgz \
+  -f pial_edits_after/surf/lh.white:edgecolor=yellow \
+  pial_edits_after/surf/lh.pial:edgecolor=red \
+  pial_edits_after/surf/rh.white:edgecolor=yellow \
+  pial_edits_after/surf/rh.pial:edgecolor=red \
+
+=====================================================================
+
+## 第4部: FreeSurferトラブルシューティング(2) 白質の修正・標準脳位置合わせの修正
+
+4.1 白質の修正:病変部位などの誤除外
+=====================================================================
+cd $SUBJECTS_DIR
+freeview -v wm1_edits_before/mri/brainmask.mgz \
+  wm1_edits_before/mri/wm.mgz:colormap=heat:opacity=0.4 -f \
+  wm1_edits_before/surf/lh.white:edgecolor=yellow \
+  wm1_edits_before/surf/lh.pial:edgecolor=red \
+  wm1_edits_before/surf/rh.white:edgecolor=yellow \
+  wm1_edits_before/surf/rh.pial:edgecolor=red \
+  wm1_edits_before/surf/rh.inflated:visible=0 \
+  wm1_edits_before/surf/lh.inflated:visible=0
+
+=====================================================================
+
+4.2 白質の修正:信号むらなどによる誤除外
+=====================================================================
+cd $SUBJECTS_DIR
+freeview -v topo_defect_before/mri/brainmask.mgz \
+  topo_defect_before/mri/wm.mgz:colormap=heat:opacity=0.4:visible=0 -f \
+  topo_defect_before/surf/lh.white:edgecolor=yellow \
+  topo_defect_before/surf/lh.pial:edgecolor=red \
+  topo_defect_before/surf/rh.white:edgecolor=yellow \
+  topo_defect_before/surf/rh.pial:edgecolor=red \
+  topo_defect_before/surf/lh.smoothwm.nofix:visible=0 
+
+=====================================================================
+
+4.3 白質の修正:信号むらなどによる誤除外
+=====================================================================
+cd $SUBJECTS_DIR
+freeview -v cp_before/mri/brainmask.mgz –f
+  cp_before/surf/lh.white:edgecolor=yellow
+  cp_before/surf/lh.pial:edgecolor=red
+  cp_before/surf/rh.white:edgecolor=yellow
+  cp_before/surf/rh.pial:edgecolor=red
+
+=====================================================================
+
+
+4.4.1 標準脳への位置合わせの修正
+=====================================================================
+freeview -v tal_before/mri/T1.mgz \
+  tal_before/mri/brainmask.mgz:reg=tal_before/mri/transforms/talairach.xfm
+
+=====================================================================
+
+4.4.2 位置合わせの修正
+=====================================================================
+#Lin4Neuroの場合
+mkdir -p ~/freesurfer/subjects
+cp -r /media/sf_share/buckner_data/tutorial_subjs/tal_before/ ~/freesurfer/subjects
+export SUBJECTS_DIR=~/freesurfer/subjects
+tkregister2 --mgz --s tal_before --fstal --surf orig
+
+#Macの場合
+tkregister2 --mgz --s tal_before --fstal --surf orig
+=====================================================================
+
+## 第5部: FreeSurferトラブルシューティング(3) 脳部位境界の修正
+
+5. 脳部位境界の修正
+=====================================================================
+#Lin4Neuroの場合
+export SUBJECTS_DIR=/media/sf_share/freesurfer/subjects
+tksurfer -annot aparc bert rh pial
+
+#Macの場合
+export SUBJECTS_DIR=~/freesurfer/subjects
+tksurfer -annot aparc bert rh pial
+=====================================================================
 
