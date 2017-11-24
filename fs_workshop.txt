@@ -146,12 +146,12 @@ export SUBJECTS_DIR=~/Downloads/buckner_data/tutorial_subjects
 3.1 脳抽出のマニュアル修正:削りすぎ
 =====================================================================
 cd $SUBJECTS_DIR
-freeview -v skullstrip_before/mri/T1.mgz \
-  skullstrip_before/mri/brainmask.mgz:colormap=heat:visible=false -f \
-  skullstrip_before/surf/lh.white:edgecolor=yellow \
-  skullstrip_before/surf/lh.pial:edgecolor=red \
-  skullstrip_before/surf/rh.white:edgecolor=yellow \
-  skullstrip_before/surf/rh.pial:edgecolor=red \
+freeview -v skullstrip1_before/mri/T1.mgz \
+  skullstrip1_before/mri/brainmask.mgz:colormap=heat:visible=false -f \
+  skullstrip1_before/surf/lh.white:edgecolor=yellow \
+  skullstrip1_before/surf/lh.pial:edgecolor=red \
+  skullstrip1_before/surf/rh.white:edgecolor=yellow \
+  skullstrip1_before/surf/rh.pial:edgecolor=red \
 
 =====================================================================
 
@@ -242,13 +242,9 @@ tkregister2 --mgz --s tal_before --fstal --surf orig
 ## 第5部: FreeSurferトラブルシューティング(3) 脳部位境界の修正
 
 5. 脳部位境界の修正
-=====================================================================
-#Lin4Neuroの場合
-export SUBJECTS_DIR=/media/sf_share/freesurfer/subjects
-tksurfer -annot aparc bert rh pial
 
-#Macの場合
-export SUBJECTS_DIR=~/freesurfer/subjects
+SUBJECTS_DIRをリセットするために、一度、ターミナルを終了し、再度起動してください。
+=====================================================================
 tksurfer -annot aparc bert rh pial
 =====================================================================
 
