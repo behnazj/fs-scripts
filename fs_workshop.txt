@@ -139,7 +139,7 @@ aparcstats2table \
 export SUBJECTS_DIR=/media/sf_share/buckner_data/tutorial_subjs
 
 #Macの場合
-export SUBJECTS_DIR=~/Downloads/buckner_data/tutorial_subjects
+export SUBJECTS_DIR=~/Downloads/buckner_data/tutorial_subjs
 
 =====================================================================
 
