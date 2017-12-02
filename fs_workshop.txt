@@ -151,7 +151,7 @@ freeview -v skullstrip1_before/mri/T1.mgz \
   skullstrip1_before/surf/lh.white:edgecolor=yellow \
   skullstrip1_before/surf/lh.pial:edgecolor=red \
   skullstrip1_before/surf/rh.white:edgecolor=yellow \
-  skullstrip1_before/surf/rh.pial:edgecolor=red \
+  skullstrip1_before/surf/rh.pial:edgecolor=red
 
 =====================================================================
 
@@ -171,7 +171,7 @@ freeview -v pial_edits_before/mri/T1.mgz \
   -f pial_edits_before/surf/lh.white:edgecolor=yellow \
   pial_edits_before/surf/lh.pial:edgecolor=red \
   pial_edits_before/surf/rh.white:edgecolor=yellow \
-  pial_edits_before/surf/rh.pial:edgecolor=red \
+  pial_edits_before/surf/rh.pial:edgecolor=red
 
 =====================================================================
 
@@ -191,9 +191,25 @@ freeview -v pial_edits_after/mri/T1.mgz \
   -f pial_edits_after/surf/lh.white:edgecolor=yellow \
   pial_edits_after/surf/lh.pial:edgecolor=red \
   pial_edits_after/surf/rh.white:edgecolor=yellow \
-  pial_edits_after/surf/rh.pial:edgecolor=red \
+  pial_edits_after/surf/rh.pial:edgecolor=red
 
 =====================================================================
+
+3.2.3 脳抽出の修正: 小脳へはみ出している場合
+
+=====================================================================
+cd $SUBJECTS_DIR/bert/mri
+cp brain.finalsurfs.mgz brain.finalsurfs.manedit.mgz
+cd $SUBJECTS_DIR
+freeview -v bert/mri/T1.mgz \
+  bert/mri/brainmask.finalsurfs.manedit.mgz \
+  -f bert/surf/lh.white:edgecolor=yellow \
+  bert/surf/lh.pial:edgecolor=red \
+  bert/surf/rh.white:edgecolor=yellow \
+  bert/surf/rh.pial:edgecolor=red
+
+=====================================================================
+
 
 ## 第4部: FreeSurferトラブルシューティング(2) 白質の修正・標準脳位置合わせの修正
 
