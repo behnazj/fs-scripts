@@ -3,7 +3,7 @@
 #Two csv files will be generated.
 #Output will be one row for subject and one column for subject
 #Usage: fs_asegstats.sh subject(s)
-#12 Nov 2017 K.Nemoto
+#3 Dec 2017 K.Nemoto
 
 #Check if the arguments are specified
 if [ $# -lt 1 ] ; then
@@ -22,9 +22,9 @@ if [ ! -d tables ]; then
 fi
 cd tables
 
-asegstats2table --subjects "$@" --table ${timestamp}.aseg.vol.csv
+asegstats2table --subjects "$@" --table ${timestamp}.aseg.vol.txt
 asegstats2table --subjects "$@" --transpose \
-  --table ${timestamp}.aseg.vol.trans.csv
+  --table ${timestamp}.aseg.vol.trans.txt
 
 cd $SUBJECTS_DIR
 
