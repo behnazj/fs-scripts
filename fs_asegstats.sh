@@ -1,6 +1,6 @@
 #!/bin/bash
 #A script to utilize asegstats2table
-#Two csv files will be generated.
+#Two txt files will be generated.
 #Output will be one row for subject and one column for subject
 #Usage: fs_asegstats.sh subject(s)
 #3 Dec 2017 K.Nemoto
