@@ -26,3 +26,18 @@ FreeViewにて、SubjectのVolumeデータ、Surfaceデータを一度に読み�
 ## fs_aparcstats.sh
 皮質データの種々の統計値を表に書き出すスクリプトです
 
+## fs_modify-recon-all.sh
+recon-allはVirtualBoxなどを使う場合、共有フォルダにシンボリックリンクを作れないためにエラーとなります。この問題を解決するスクリプトです
+
+## fs_qc1_skullstrip.sh
+QCのためにskull-strippingを確認するためのスクリプトです。
+
+## fs_qc2_aseg.sh
+QCのために皮質下のsegmentationを確認するためのスクリプトです
+
+## fs_qc3_wm.sh
+QCのためにwm.mgzを確認するためのスクリプトです
+
+## fs_qc4_pial.sh
+QCのためにpial surfaceを確認するためのスクリプトです
+
