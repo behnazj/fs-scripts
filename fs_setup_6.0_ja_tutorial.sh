@@ -10,7 +10,7 @@ echo "FreeSurferのインストールを開始します。"
 echo
 echo "このスクリプトはFreeSurferのダウンロードとインストールを行います。"
 echo "ライセンスを事前に準備する必要があります。"
-echo "FreeSurferのregistration後に送られてくるlicense.txtをホームの下にあるDownloadsに保存してください。"
+echo "FreeSurferのregistration後に送られてくるlicense.txtを共有ディレクトリ"share"に保存してください。もし、事前にFreeSurferのインストールファイルをダウンロードしている場合も、"share"に保存してください。"
 
 while true; do
 
@@ -32,16 +32,16 @@ read answer
 done
 
 # Download freesurfer
-if [ ! -e $HOME/Downloads/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz ]; then
+if [ ! -e /media/sf_share/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz ]; then
 	echo "Freesurfer を $HOME/Downloads にダウンロードします"
-	cd $HOME/Downloads
+	cd /media/sf_share
 	wget -c ftp://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/6.0.0/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz
 else
-	echo "Freesurfer のアーカイブが $HOME/Downloads にあることを確認しました"
+	echo "Freesurfer のアーカイブが /media/sf_share にあることを確認しました"
 fi
 
 # check the archive
-cd $HOME/Downloads
+cd /media/sf_share
 echo "ダウンロードファイルが壊れていないか確認します"
 echo "d49e9dd61d6467f65b9582bddec653a4  freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz" > freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz.md5
 
@@ -59,21 +59,21 @@ rm freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz.md5
 # check license.txt
 echo "license.txtがあるかを確認します。"
 
-if [ -e $HOME/Downloads/license.txt ]; then
+if [ -e /media/sf_share/license.txt ]; then
     echo "license.txt を確認しました。インストールを続けます。"
 else
     echo "license.txtがありません。"
-    echo "インストールを中止します。license.txtを $HOME/Downloads に保存してから再度スクリプトを実行してください。"
+    echo "インストールを中止します。license.txtを 共有フォルダ "share" に保存してから再度スクリプトを実行してください。"
     exit 1
 fi
 
 # install freesurfer
 echo "FreeSurferをインストールします"
 cd /usr/local
-sudo tar xvzf $HOME/Downloads/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz
+sudo tar xvzf /media/sf_share/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz
 
 if [ -d "/usr/local/freesurfer" ]; then
-    sudo cp $HOME/Downloads/license.txt /usr/local/freesurfer
+    sudo cp /media/sf_share/Downloads/license.txt /usr/local/freesurfer
 else
     echo "FreeSurferは正しく展開されませんでした"
     exit 1
