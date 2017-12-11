@@ -10,7 +10,8 @@ echo "FreeSurferのインストールを開始します。"
 echo
 echo "このスクリプトはFreeSurferのダウンロードとインストールを行います。"
 echo "ライセンスを事前に準備する必要があります。"
-echo "FreeSurferのregistration後に送られてくるlicense.txtを共有ディレクトリ"share"に保存してください。もし、事前にFreeSurferのインストールファイルをダウンロードしている場合も、"share"に保存してください。"
+echo "FreeSurferのregistration後に送られてくるlicense.txtを共有ディレクトリ'share'に保存してください。"
+echo "もし、事前にFreeSurferのインストールファイルをダウンロードしている場合も、'share'に保存してください。"
 
 while true; do
 
@@ -18,7 +19,7 @@ echo "FreeSurferのインストールをはじめていいですか? (yes/no)"
 read answer 
     case $answer in
         [Yy]*)
-          echo "インストールをはじめます"
+          echo "インストールをはじめます。パスワードが聞かれますので、lin4neuroとたいぷしてください。タイプしても文字は表示されませんので注意してください"
 	  break
           ;;
         [Nn]*)
@@ -33,7 +34,7 @@ done
 
 # Download freesurfer
 if [ ! -e /media/sf_share/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz ]; then
-	echo "Freesurfer を $HOME/Downloads にダウンロードします"
+	echo "Freesurfer を /meida/sf_share にダウンロードします"
 	cd /media/sf_share
 	wget -c ftp://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/6.0.0/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz
 else
@@ -73,7 +74,7 @@ cd /usr/local
 sudo tar xvzf /media/sf_share/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz
 
 if [ -d "/usr/local/freesurfer" ]; then
-    sudo cp /media/sf_share/Downloads/license.txt /usr/local/freesurfer
+    sudo cp /media/sf_share/license.txt /usr/local/freesurfer
 else
     echo "FreeSurferは正しく展開されませんでした"
     exit 1
@@ -103,6 +104,6 @@ fi
 echo "インストールが終了しました！"
 echo "端末を閉じて、新たに端末を立ち上げてください"
 echo "そのうえで、fs_check_6.0.sh を走らせてください"
-
+sleep 10
 exit
 
