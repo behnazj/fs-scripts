@@ -19,6 +19,6 @@ freeview -v \
 -f  \
     $SUBJECTS_DIR/$1/surf/lh.pial:edgecolor=blue \
     $SUBJECTS_DIR/$1/surf/rh.pial:edgecolor=blue \
-    --layout 3 --viewport sagittal --zoom 1.5 &
+    --layout 3 --viewport coronal --zoom 1.5 &
    
  
