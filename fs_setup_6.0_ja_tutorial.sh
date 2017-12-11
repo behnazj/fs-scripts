@@ -10,8 +10,11 @@ echo "FreeSurferのインストールを開始します。"
 echo
 echo "このスクリプトはFreeSurferのダウンロードとインストールを行います。"
 echo "ライセンスを事前に準備する必要があります。"
-echo "FreeSurferのregistration後に送られてくるlicense.txtを共有ディレクトリ'share'に保存してください。"
-echo "もし、事前にFreeSurferのインストールファイルをダウンロードしている場合も、'share'に保存してください。"
+echo "FreeSurferのregistration後に送られてくるlicense.txtを"
+echo "共有ディレクトリ'share'に保存してください。"
+echo "もし、事前にFreeSurferのインストールファイルをダウンロードしている"
+echo "場合も、'share'に保存してください。"
+echo ""
 
 while true; do
 
