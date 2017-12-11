@@ -19,7 +19,9 @@ echo "FreeSurferのインストールをはじめていいですか? (yes/no)"
 read answer 
     case $answer in
         [Yy]*)
-          echo "インストールをはじめます。パスワードが聞かれますので、lin4neuroとたいぷしてください。タイプしても文字は表示されませんので注意してください"
+          echo "インストールをはじめます。"
+	  echo "パスワードが聞かれますので、lin4neuroとタイプしてください。"
+	  echo "タイプしても文字は表示されませんので注意してください"
 	  break
           ;;
         [Nn]*)

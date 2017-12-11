@@ -2,9 +2,9 @@
 Version=1.0
 Type=Application
 Name=modify-recon-all
-Exec=bash -c '~/git/fs-scripts/modify-recon-all.sh'
+Exec=bash -c '~/git/fs-scripts/fs_modify-recon-all.sh'
 Icon=
 Terminal=true
 Categories=
 StartupNotify=true
-Name[ja]=recon-allの修正
+Name[ja]=recon-all修正
