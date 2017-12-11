@@ -53,7 +53,7 @@ md5sum -c freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz.md5
 
 while [ "$?" -ne 0 ]; do
     echo "ファイルサイズが正しくありません。再度ダウンロードを行います。"
-    wget -c http://www.lin4neuro.net/fs/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz
+    wget -c ftp://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/6.0.0/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz
     md5sum -c freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz.md5
 done
 
