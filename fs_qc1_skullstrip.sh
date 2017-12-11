@@ -16,9 +16,6 @@ fi
 freeview -v \
     $SUBJECTS_DIR/$1/mri/T1.mgz \
     $SUBJECTS_DIR/$1/mri/brainmask.mgz:colormap=heat \
--f  \
-    $SUBJECTS_DIR/$1/surf/lh.pial:edgecolor=blue \
-    $SUBJECTS_DIR/$1/surf/rh.pial:edgecolor=blue \
     --layout 3 --viewport coronal --zoom 1.5 &
    
  
