@@ -19,8 +19,8 @@ freeview -v \
     $SUBJECTS_DIR/$1/mri/wm.mgz:colormap=heat:opacity=0.4 \
 -f  \
     $SUBJECTS_DIR/$1/surf/lh.white:edgecolor=yellow \
-    $SUBJECTS_DIR/$1/surf/lh.pial:edgecolor=red \
+    $SUBJECTS_DIR/$1/surf/lh.pial:edgecolor=blue \
     $SUBJECTS_DIR/$1/surf/rh.white:edgecolor=yellow \
-    $SUBJECTS_DIR/$1/surf/rh.pial:edgecolor=red \
+    $SUBJECTS_DIR/$1/surf/rh.pial:edgecolor=blue \
     --layout 3 --viewport coronal --zoom 2 &
 

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=FS_install
+Exec=bash -c '~/git/fs-scripts/fs_setup_6.0_ja_tutorial.sh'
+Icon=
+Terminal=true
+Categories=
+StartupNotify=true
+
+Name[ja]=FreeSurferのインストール

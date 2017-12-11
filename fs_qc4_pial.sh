@@ -18,7 +18,7 @@ freeview -v \
     $SUBJECTS_DIR/$1/mri/brainmask.mgz \
 -f  \
     $SUBJECTS_DIR/$1/surf/lh.white:edgecolor=yellow \
-    $SUBJECTS_DIR/$1/surf/lh.pial:edgecolor=red \
+    $SUBJECTS_DIR/$1/surf/lh.pial:edgecolor=blue \
     $SUBJECTS_DIR/$1/surf/rh.white:edgecolor=yellow \
-    $SUBJECTS_DIR/$1/surf/rh.pial:edgecolor=red \
+    $SUBJECTS_DIR/$1/surf/rh.pial:edgecolor=blue \
     --layout 3 --viewport coronal --zoom 2 &
