@@ -103,7 +103,7 @@ else
 fi
 
 echo "Installation finished!"
-echo "Now close this terminal, open another terminal, and run check_freesurfer6.0.0.sh"
+echo "Now close this terminal, open another terminal, and run fs_check_6.0.sh"
 
 exit
 
