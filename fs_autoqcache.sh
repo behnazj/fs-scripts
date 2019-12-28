@@ -1,17 +1,16 @@
 #!/bin/bash
-# For-loop for recon-all with qcache
-# Usage: fs_autorecon.sh <nifti file(s)>
+# For-loop for recon-all -qcache
+# Usage: fs_autoqcache.sh <subject id(s)>
 # Wild card can be used.
-# nifti file name will be the subject id for FreeSurfer
-# e.g. con001.nii -> con001
-
 # 19 Jan 2019 K.Nemoto
+
+#set -x
 
 #Check if the files are specified
 if [ $# -lt 1 ]
 then
-	echo "Please specify nifti files!"
-	echo "Usage: $0 <nifti_file(s)>"
+	echo "Please specify subject id(s)!"
+	echo "Usage: $0 <subject id(s)>"
 	echo "Wild card can be used."
 	exit 1
 fi
@@ -27,11 +26,10 @@ if [ $? -eq 1 ]; then
   cp -r $FREESURFER_HOME/subjects/[lr]h.EC_average $SUBJECTS_DIR
 fi
 
-#recon-all
+# recon-all -qcache
 for f in "$@"
 do
-    fsid=${f%.nii*}
-    recon-all -i $f -s $fsid -all -qcache
+    recon-all -s $f -qcache
 done
 
 exit
