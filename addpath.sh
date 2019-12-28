@@ -15,16 +15,16 @@ do
     echo '#PATH for fs-scripts' >> ~/.bashrc
     echo "PATH=$PWD:\$PATH" >> ~/.bashrc
     echo "PATH for fs-scripts was added to ~/.bashrc"
-    echo "Please close the terminal and re-open."
+    echo "Please close the terminal, re-open and run checkpath.sh."
 
     break
 
   elif [ $os == "MacOS" ] ; then
     echo '' >> ~/.bash_profile
     echo '#PATH for fs-scripts' >> ~/.bash_profile
-    echo "PATH=$PWD:\$PATH" >> ~/.bash_pofile
+    echo "PATH=$PWD:\$PATH" >> ~/.bash_profile
     echo "PATH for fs-scripts was added to ~/.bash_profile"
-    echo "Please close the terminal and re-open."
+    echo "Please close the terminal, re-open and run checkpath.sh."
 
     break
 
@@ -33,4 +33,3 @@ do
      exit 0
   fi
 done
-
