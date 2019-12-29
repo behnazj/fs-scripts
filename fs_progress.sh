@@ -45,25 +45,25 @@ EOS
 
 #1 motioncor
 echo "=============================="
-echo "Begin ${directive}"
+echo "Begin #01"
 source fs_timestamp.sh
 recon-all -s ernie -i sample-001.mgz -i sample-002.mgz -motioncor 
 echo "Step01 -motioncor" > progress/step_01_result.txt
 find ernie -type f -newer /tmp/_timestamp | tee -a progress/step_01_result.txt
-echo "End ${directive}"
+echo "End #01"
 echo "=============================="
 
 #2-32
 cat recon_directives | while read no directive
 do
   echo "=============================="
-  echo "Begin ${directive}"
+  echo "Begin #${directive}"
   source fs_timestamp.sh
   result=step_${no}_result.txt
   recon-all -s ernie $directive
   echo "Step_${no} $directive" > progress/${result}
   find ernie -type f -newer /tmp/_timestamp | tee -a progress/${result}
-  echo "End ${directive}"
+  echo "End #${directive}"
   echo "=============================="
 done
 
