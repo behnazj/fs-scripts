@@ -1,6 +1,6 @@
 #!/bin/bash
 # Script to see how recon-all generates files
-# K.Nemoto 29 Dec 2019
+# K.Nemoto 30 Dec 2019
 
 cd $SUBJECTS_DIR
 
@@ -9,8 +9,8 @@ if [ ! -d progress ]; then
 fi
 
 #arguments
-#01 -motionor	Motin_Correct_and_Average
 cat << EOS > recon_directives
+01 -motionor	Motin_Correct_and_Average
 02 -talairach	Talairach
 03 -nuintensitycor	Nu_Intensity_Correction
 04 -normalization	Intensity_Normalization1
@@ -54,17 +54,17 @@ cat << EOS > recon_directives
 42 -balabels	Brodmann_Area_Labels
 EOS
 
-#1 motioncor
+#prepare fsid and images
 echo "=============================="
-echo "Begin #01"
+echo "Begin #00"
 source fs_timestamp.sh
-recon-all -s ernie -i sample-001.mgz -i sample-002.mgz -motioncor 
-echo "Step01 -motioncor Motion_Correct_and_Average" > progress/step_01_result.txt
-find ernie -type f -newer /tmp/_timestamp | tee -a progress/step_01_result.txt
-echo "End #01"
+recon-all -s ernie -i sample-001.mgz -i sample-002.mgz 
+echo "Step00 Prepare fsid and images" > progress/step_00_result.txt
+find ernie -type f -newer /tmp/_timestamp | tee -a progress/step_00_result.txt
+echo "End #00"
 echo "=============================="
 
-#2-
+#directives
 cat recon_directives | while read no directive descrip
 do
   echo "=============================="
@@ -80,6 +80,4 @@ done
 
 rm recon_directives
 rm /tmp/_timestamp
-
-
 
