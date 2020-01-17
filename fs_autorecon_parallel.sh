@@ -6,13 +6,13 @@
 # nifti file name will be the subject id for FreeSurfer
 # e.g. con001.nii -> con001
 
-# 05 Jan 2020 K.Nemoto
+# 17 Jan 2020 K.Nemoto
 
-#set -x
+#set -x #for debugging
 
-#### Set this parameter #### 
-maxrunning=8
-############################
+#Set parameter for parallel processing
+read -p "How many processes you want in parallel?: " maxrunning
+echo "\$maxrunning is set to $maxrunning"
 
 
 #Check if the files are specified
@@ -23,6 +23,7 @@ then
 	echo "Wild card can be used."
 	exit 1
 fi
+
 
 #copy fsaverage and {lr}h.EC_average to $SUBJECTS_DIR if they don't exsit
 find $SUBJECTS_DIR -maxdepth 1 | egrep fsaverage$ > /dev/null
@@ -36,7 +37,6 @@ if [ $? -eq 1 ]; then
 fi
 
 
-
 #recon-all
 for f in "$@"
 do
@@ -47,8 +47,8 @@ do
     	running=$(ps -aux | grep 'bin/recon-all' | wc -l)
     done
     fsid=${f%.nii*}
-    #recon-all -i $f -s $fsid & #for debugging
     recon-all -i $f -s $fsid -all -qcache &
+    #recon-all -i $f -s $fsid -autorecon1 & #for debugging
 done
 
 exit
